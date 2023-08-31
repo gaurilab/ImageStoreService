@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ .album.AlbumName }}</title>
+</head>
+<body>
+    <h1>{{ .album.AlbumName }}</h1>
+    <ul>
+        {{ range .images }}
+        <li>
+            <a href="/images/{{ .ID }}">{{ .ImageName }}</a>
+            <a href="/delete-image/{{ $.album.ID }}/{{ .ID }}">Delete</a>
+        </li>
+        {{ end }}
+    </ul>
+    <a href="/upload/{{ .album.ID }}">Upload Image</a>
+    <br>
+    <a href="/delete-album/{{ .album.ID }}">Delete Album</a>
+    <br>
+    <a href="/">Back to Albums</a>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Store</title>
+</head>
+<body>
+    <h1>Albums</h1>
+    <ul>
+        {{ range .albums }}
+        <li>
+            <a href="/albums/{{ .ID }}">{{ .AlbumName }}</a>
+            
+        </li>
+        {{ end }}
+    </ul>
+    <a href="/create-album">Create Album</a>
+</body>
+</html>
+
+<!--
+    <a href="/delete-album/{{ .ID }}">Delete</a>
+-->
+

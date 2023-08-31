@@ -1,39 +1,28 @@
 package main
 
 import (
-	"net/http"
-	"strconv"
-
+	"github.com/gaurilab/ImageStoreService/api/handlers"
+	"github.com/gaurilab/ImageStoreService/database"
 	"github.com/gin-gonic/gin"
-	"github.com/gaurilab/image-store-service/api/handlers"
 )
 
 func main() {
 	r := gin.Default()
-
+	database.ConnectDB()
 	r.LoadHTMLGlob("templates/*")
 
-	r.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", nil)
-	})
+	r.GET("/", handlers.RenderHomePage)
 
-	// User Handlers
-	r.POST("/users", handlers.CreateUser)
-	r.POST("/users/login", handlers.Login)
-	r.POST("/users/logout", handlers.Logout)
+	r.GET("/create-album", handlers.RenderCreateAlbumPage)
+	r.POST("/create-album", handlers.CreateAlbum)
 
-	// Album Handlers
-	r.POST("/albums", handlers.CreateAlbum)
-	r.DELETE("/albums/:id", handlers.DeleteAlbum)
-	r.GET("/albums/:id", handlers.GetAlbum)
-	r.GET("/albums", handlers.GetAllAlbums)
+	r.GET("/delete-album/:albumID", handlers.DeleteAlbum)
+	r.GET("/albums/:albumID", handlers.GetAlbum)
 
-	// Image Handlers
-	r.POST("/albums/:id/images", handlers.UploadImage)
-	r.GET("/albums/:id/images", handlers.GetAllImages)
-	r.GET("/albums/:id/images/:imageID", handlers.GetImage)
-	r.DELETE("/albums/:albumID/images/:imageID", handlers.DeleteImage)
+	r.GET("/upload/:albumID", handlers.RenderUploadImagePage)
+	r.POST("/upload/:albumID", handlers.UploadImage)
+	r.GET("/delete-image/:albumID/:imageID", handlers.DeleteImage)
+	r.GET("/images/:id", handlers.RenderImage)
 
-	r.Run(":8080")
+	r.Run(":9080")
 }
-

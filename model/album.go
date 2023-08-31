@@ -1,13 +1,17 @@
-package models
+package model
 
-type Album struct {
-	ID    int      `json:"id"`
-	Name  string   `json:"name"`
-	Images []Image `json:"images"`
-}
+import "time"
 
 type Image struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+	ID         string    `bson:"_id,omitempty"`
+	AlbumID    string    `bson:"album_id"`
+	ImageData  []byte    `bson:"image_data"`
+	UploadTime time.Time `bson:"upload_time"`
+	ImageName  string    `bson:"name"`
 }
 
+type Album struct {
+	ID        string    `bson:"_id,omitempty"`
+	AlbumName string    `bson:"name"`
+	CreatedAt time.Time `bson:"created_at"`
+}

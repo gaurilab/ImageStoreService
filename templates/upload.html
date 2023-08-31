@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image</title>
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <form action="/upload/{{ .albumID }}" method="POST" enctype="multipart/form-data">
+        <label for="image">Select Image:</label>
+        <input type="file" id="image" name="image" accept="image/*">
+        <input type="text" id="image-name" name="image-name">
+        <button type="submit">Upload Image</button>
+    </form>
+    <a href="/albums/{{ .albumID }}">Back to Album</a>
+</body>
+</html>
+
