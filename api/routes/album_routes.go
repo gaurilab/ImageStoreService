@@ -2,7 +2,7 @@ package routes
 
 import (
     "github.com/gin-gonic/gin"
-    "api/handlers"
+    "github.com/gauriab/ImageStoreService/api/handlers"
 )
 
 func SetupAlbumRoutes(router *gin.RouterGroup) {

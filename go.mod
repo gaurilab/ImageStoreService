@@ -7,3 +7,6 @@ require (
     github.com/onsi/ginkgo v1.16.1
     github.com/onsi/gomega v1.16.0
 )
+
+replace github.com/gaurilab/ImageStoreService/api/handlers => ./api/handlers 
+replace github.com/gaurilab/ImageStoreService/api/model => ./api/model

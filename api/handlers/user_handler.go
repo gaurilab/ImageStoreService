@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/gaurilab/image-store-service/models"
+	"github.com/gaurilab/ImageStoreService/models"
 	"github.com/gin-gonic/gin"
 )
 
